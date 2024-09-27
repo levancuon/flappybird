@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+<script>
+    //Viết hàm kiểm tra xem 1 chuỗi có nằm trong chuỗi còn lại không. Với đầu vào là 2 chuỗi
+    // (str1,str2) trong đó sẽ kiểm tra str1 có nằm trong str2 không, nếu có trả về true và ngược lại false.
+    // (không được dùng hàm có sẵn để tìm)
+
+     /*function check(arr1, arr2) {
+        if (arr1.length > arr2.length) {
+            return false;
+        }
+        for (let i = 0; i <= arr2.length - arr1.length; i++) {
+            let found = true;
+            for (let j = 0; j < arr1.length; j++) {
+                if (arr1[j] !== arr2[i + j]) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) {
+                return true;
+            }
+        }
+        return true
+    }
+
+    console.log(check('hello', 'uádhellop'))
+
+      */
+
+    //Viết hàm tryRemoveFromArray() nhận vào tham số là một mảng và một số nguyên index, trả về mảng ban đầu đã được
+    // loại bỏ phần tử tại vị trí index nếu index hợp lệ. Nếu index không hợp lệ, trả về mảng ban đầu.
+    //(không dùng hàm có sẵn để xóa mảng)
+
+    /* cách 1
+    function tryRemoveFromArray(arr, index) {
+            let count = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if(arr[i]!==index){
+                    count++;
+                }
+            } if (count===arr.length){
+                return arr;
+            }
+            let newarr = [];
+            for (let i = 0; i < arr.length; i++) {
+                if(arr[i]!==index){
+                    newarr.push(arr[i])
+                }
+            } return newarr;
+        }
+
+        let b = 5
+        let a = [2, -5, 3, 10]
+        document.write(tryRemoveFromArray(a, b))
+
+     */
+    //cach2
+    /*let arr = [1, 7, 3, 10, 5, 6, 2, 8, 9, 4];
+    let num = 10;
+
+    function tryRemoveFromArray(arr, num) {
+        let count = 0
+        for (let i = 0; i < arr.length; i++) {
+            if (num !== arr[i]) {
+                count++
+            }
+        }
+        if (count === arr.length) {
+            return arr;
+        }
+        for (let i = arr.indexOf(num); i < arr.length; i++) {
+            arr[i] = arr[i + 1]
+        }
+        let arr2 = [];
+        for (let i = 0; i < arr.length - 1; i++) {
+            arr2.push(arr[i])
+        }
+        arr = arr2
+        return arr;
+    }
+
+    console.log(tryRemoveFromArray(arr, num))
+
+     */
+
+
+
+    // Viết chương trình nhập vào 1 mảng số nguyên gồm 10 phần tử.
+    // Chươg trình hiển thị ra mảng đã xếp xếp theo thứ tự giảm dần.
+    // (ko dùng hàm có sẵn)
+
+
+    //Hàm để sắp xếp mảng theo thứ tự giảm dần bằng thuật toán sắp xếp chọn (selection sort)
+    /*function selectionSort(arr) {
+         for (let i = 0; i < arr.length - 1; i++) {
+             let maxIndex = i;
+             for (let j = i + 1; j < arr.length; j++) {
+                 if (arr[j] > arr[maxIndex]) {
+                     maxIndex = j;
+                 }
+             }
+             if (maxIndex !== i) {
+                 // Hoán đổi giá trị của arr[i] và arr[maxIndex]
+                 let temp = arr[i];
+                 arr[i] = arr[maxIndex];
+                 arr[maxIndex] = temp;
+             }
+         }
+         console.log(arr);
+     }
+
+     selectionSort(arr)
+
+     */
+
+    /* function check(arr) {
+
+       for (let i = 0; i < arr.length-1; i++) {
+           let index = i
+           for (let j = i + 1; j < arr.length; j++) {
+               if (arr[index] < arr[j]) {
+                   index = j;
+               }
+           }
+           if(index!==i){
+               let num = arr[i];
+               arr[i]=arr[index];
+               arr[index]=num;
+           }
+       }
+       console.log(arr)
+   }
+   check(arr)
+
+     */
+
+
+
+    /*function check(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let index = arr[i];
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[i] < arr[j]) {
+                    index = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = index;
+                }
+            }
+        }
+        console.log(arr)
+    }
+
+    check(arr)
+    
+     */
+
+    //Cho danh sách các điểm thi ở trong một mảng
+    //Hãy viết hàm tìm được điểm thi cao thứ 3 với đầu vào là một 
+    // mảng điểm. (không dùng hàm có sẵn để sắp xếp).
+
+    /*function maxIndex3Value(arr){
+        let min = arr[0];
+        for (let i = 0; i < arr.length; i++) {
+            if(min>arr[i]){
+                min = arr[i];
+            }
+        }
+        let max1 = min;
+        let max2 = min;
+        let max3 = min;
+
+        for (let i = 0; i < arr.length; i++) {
+            if(max1<arr[i]){
+                max3=max2;
+                max2=max1;
+                max1=arr[i];
+            }
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i]<max1&&arr[i]>max2){
+                max3=max2
+                max2=arr[i];
+            }
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i]<max2&&arr[i]>max3){
+                max3=arr[i];
+            }
+        }
+        console.log(max3);
+    }
+    let arr = [1, 7, 3, 10, 5, 6, 2, 8, 9, 4];
+    maxIndex3Value(arr)
+
+     */
+
+
+
+
+
+
+    // Hãy viết một chương trình để biểu diễn hình chữ nhật, với mô tả của lớp hình chữ nhật như sau:
+    // Rectangle: Tên lớp
+    // -	x: Toạ độ x
+    // -	y: Toạ độ y
+    // -	width: Chiều rộng
+    // -	height: Chiều cao
+    // -	color: Màu sắc (sử dụng mã màu hex)
+    // +	render(canvas): Hiển thị hình chữ nhật trên một canvas
+    // Hãy thực hiện các thao tác theo kịch bản sau:
+    //     - Tạo một hình chữ nhật có tọa độ 10,10 và kích thước rộng 200, cao 100, màu #000000
+    // - Hiển thị hình chữ nhật trên một canvas bằng cách sử dụng phương thức render
+
+    /* class Rectangle {
+        constructor(x, y, width, height, color) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.color = color;
+        }
+
+        render(canvas) {
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+
+
+    const rect = new Rectangle(10, 10, 200, 100, 'red');
+    const canvas = document.getElementById('myCanvas');
+    rect.render(canvas);
+
+     */
+
+    //vẽ hình chữ nhật
+    /*class Rectangle {
+        x;
+        y;
+        width;
+        height;
+        color;
+
+        constructor(x, y, width, height, color) {
+            this.x = x;
+            this.y = y;
+            this.width = width;
+            this.height = height;
+            this.color = color;
+        }
+
+        render() {
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d');
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height)
+        }
+
+
+    }
+
+    let rect = new Rectangle(10, 10, 200, 100, 'red');
+    rect.render(canvas)
+
+     */
+
+
+</script>
+</body>
+</html>
